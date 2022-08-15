@@ -48,7 +48,7 @@
 					placement: 'auto',
 				});
 
-				content = new String(ev.target.textContent);
+				var content = new String(ev.target.textContent);
 
 				navigator.clipboard.writeText(content.isk()).then(
 					function() {
