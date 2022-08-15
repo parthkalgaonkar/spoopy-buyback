@@ -17,8 +17,6 @@ export class BuybackCalculator {
 	}
 
 	buyback_rate(item) {
-		console.log("Recieved:");
-		console.log(item);
 		var base_price = item.base_price;
 		var buy_price = base_price - this.calculate_deductions(item);
 		return buy_price;

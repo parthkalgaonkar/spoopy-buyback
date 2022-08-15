@@ -6,8 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spoopy</title>
   </head>
-  <body class="container mx-auto">
-    <div id="app"></div>
+  <body class="bg-srcblack text-srcwhite">
+		<div class="bg-srcred w-full text-center sm:hidden">Optimized for desktop</div>
+		<div class="w-full h-24 text-center grid grid-cols-12 content-center">
+			<div>
+				<img src="/static/spoopy.png" alt="Spoopy Logo" class="h-20 object-scale-down ml-4">
+			</div>
+			<div class="my-auto font-bold text-5xl col-span-10 content-center">
+				SPOOPY BUYBACK
+			</div>
+			<div>
+				<img src="/static/spoopy.png" alt="Spoopy Logo" class="float-right h-20 object-scale-down mr-4">
+			</div>
+		</div>
+    <div class="max-w-6xl mx-auto grid grid-cols-2 font-mono p-4 gap-4" id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

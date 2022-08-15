@@ -6,16 +6,18 @@
 	import AppraisalView from './components/AppraisalView.vue';
 	import AppraisalSummarize from './components/AppraisalSummarize.vue';
 	import AppraisalSummaryView from './components/AppraisalSummaryView.vue';
+	import AlertView from './components/AlertView.vue';
 </script>
 
 <template>
 	<AppraisalInput />
-	<AppraisalFetch />
-	<AppraisalJanice />
-	<AppraisalCompute />
-	<AppraisalView />
-	<AppraisalSummarize />
+	<AppraisalFetch /> <!-- Empty component -->
+	<AppraisalJanice /> <!-- Empty component -->
+	<AppraisalCompute /> <!-- Empty component -->
+	<AppraisalSummarize /> <!-- Empty component -->
 	<AppraisalSummaryView />
+	<AppraisalView class="col-span-2" />
+	<AlertView />
 </template>
 
 <script>
@@ -33,6 +35,7 @@
 			AppraisalView,
 			AppraisalSummarize,
 			AppraisalSummaryView,
+			AlertView,
 		}
 	}
 </script>

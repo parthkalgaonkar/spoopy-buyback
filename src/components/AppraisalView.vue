@@ -3,19 +3,19 @@
 </script>
 
 <template>
-	<table v-if="Appraisal.compute">
+	<table v-if="Appraisal.compute" class="text-end">
 		<tr>
-			<th>Name</th>
+			<th></th>
+			<th class="text-start">Name</th>
 			<th>Qty</th>
-			<th>Jita Buy <br> Total</th>
+			<th>{{Appraisal.compute.market}} Buy <br> Total</th>
 			<th>Buyback Rate <br> Total</th>
 			<th>Effective Rate</th>
 		</tr>
-		<tr v-for="item in Appraisal.compute.items">
+		<tr v-for="item in Appraisal.compute.items" class="odd:bg-srcblack-light">
 			<ItemView :item="item"/>
 		</tr>
 	</table>
-	<div v-else>Enter Janice code to get quote</div>
 </template>
 
 
