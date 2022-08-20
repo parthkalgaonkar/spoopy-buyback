@@ -4,6 +4,7 @@
 	import {Appraisal} from '../stores/Appraisal.js';
 	import {BuybackCalculator} from '../lib/BuybackCalculator.js';
 	import {TaxDeduction, HaulingDeduction} from '../lib/deductions.js';
+	import {FlatRates} from '../lib/flat_rates.js';
 
 	export default {
 		data() {
@@ -19,13 +20,13 @@
 					// get basic data in
 					var compute = {
 						items: [],
-						market: newval.market
 					};
 
 					// initialize calculator
 					var calculator = new BuybackCalculator();
 					calculator.add_deduction(new TaxDeduction());
 					calculator.add_deduction(new HaulingDeduction());
+					calculator.add_flat_rate(new FlatRates());
 
 					// Calculate fields for all items
 					for (var item of newval.items) {

@@ -1,10 +1,15 @@
 <template>
-	<td><img :src="get_image_url(item.typeid)" :alt="item.name"></td>
-	<td class="text-start">{{item.name}}</td>
-	<td>{{item.qty}}</td>
-	<td>{{item.market.isk()}}<br>{{item.market_total.isk()}}</td>
-	<td>{{item.buyback.isk()}}<br>{{item.buyback_total.isk()}}</td>
-	<td>{{item.buyback_percentage.percentage()}}</td>
+	<tr 
+			:class="{
+				'border-l-8 border-srcred': item.buyback_total == 0
+			}">
+		<td><img :src="get_image_url(item.typeid)" :alt="item.name"></td>
+		<td class="text-start">{{item.name}}</td>
+		<td>{{item.qty}}</td>
+		<td>{{item.market.isk()}}<br>{{item.market_total.isk()}}</td>
+		<td>{{item.buyback.isk()}}<br>{{item.buyback_total.isk()}}</td>
+		<td>{{item.buyback_percentage.percentage()}}</td>
+	</tr>
 </template>
 
 <script>

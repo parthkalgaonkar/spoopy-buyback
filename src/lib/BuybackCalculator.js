@@ -1,10 +1,23 @@
 export class BuybackCalculator {
 	constructor() {
 		this.deduction_list = [];
+		this.flat_list = [];
 	}
 
 	add_deduction(deduction) {
 		this.deduction_list.push(deduction);
+	}
+
+	add_flat_rate(flat_rate) {
+		this.flat_list.push(flat_rate);
+	}
+
+	base_price(item) {
+		var retval = null;
+		for (var flat of this.flat_list) {
+			retval |= flat.calculate(item);
+		}
+		return retval;
 	}
 
 	calculate_deductions(item) {
@@ -19,6 +32,9 @@ export class BuybackCalculator {
 	buyback_rate(item) {
 		var base_price = item.base_price;
 		var buy_price = base_price - this.calculate_deductions(item);
+		var flat_rate = this.base_price(item);
+		if (flat_rate) buy_price = flat_rate;
+		console.log(buy_price);
 		return buy_price;
 	}
 }

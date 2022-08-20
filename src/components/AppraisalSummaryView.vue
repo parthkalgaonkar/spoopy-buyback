@@ -1,28 +1,27 @@
 <template>
-	<table v-if="Appraisal.summary">
-		<tr>
-			<td class="text-start">Market Total:</td>
-			<td class="text-end">{{Appraisal.summary.market_total.isk()}}</td>
-		</tr>
-		<tr>
-			<td class="text-start">Buyback Total:</td>
-			<td class="text-end cursor-pointer" id="buyback-total" @click="onClick">{{Appraisal.summary.buyback_total.isk()}}</td>
-		</tr>
-		<tr>
-			<td class="text-start">Effective Buyback Rate:</td>
-			<td class="text-end">{{Appraisal.summary.rate.percentage()}}</td>
-		</tr>
-		<tr>
-			<td class="text-start">Trade Hub:</td>
-			<td class="text-end">{{Appraisal.summary.market}}</td>
-		</tr>
-	</table>
-	<div class="ring-2 ring-inset ring-srcgray p-2" v-else>
+	<div v-if="Appraisal.summary">
+		<table class="w-full">
+			<tr>
+				<td class="text-start">Market Total:</td>
+				<td class="text-end">{{Appraisal.summary.market_total.isk()}}</td>
+			</tr>
+			<tr>
+				<td class="text-start">Buyback Total:</td>
+				<td class="text-end cursor-pointer" id="buyback-total" @click="onClick">{{Appraisal.summary.buyback_total.isk()}}</td>
+			</tr>
+			<tr>
+				<td class="text-start">Effective Rate:</td>
+				<td class="text-end">{{Appraisal.summary.rate.percentage()}}</td>
+			</tr>
+		</table>
+		<p>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></p>
+	</div>
+	<div class="ring-2 ring-inset ring-srcgray p-2 h-[116px]" v-else>
 		<ol class="list-decimal list-inside">
-			<li>Go to <a class="text-srcblue hover:underline" href="https://janice.e-351.com/" target="_blank">Janice</a></li>
-			<li>Paste your items and create an appraisal</li>
-			<li>Put the appraisal code (last part of URL) here</li>
-			<li>Create a contract to Spoopy Buyback</li>
+			<li>Copy items from your inventory in the textbox</li>
+			<li>Wait for appraisal to be calculated</li>
+			<li>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></li>
+			<li>Use the amount shown as "Buyback Total"</li>
 		</ol>
 	</div>
 </template>

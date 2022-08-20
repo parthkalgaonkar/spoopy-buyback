@@ -12,9 +12,7 @@
 			<th>Buyback Rate <br> Total</th>
 			<th>Effective Rate</th>
 		</tr>
-		<tr v-for="item in Appraisal.compute.items" class="odd:bg-srcblack-light">
-			<ItemView :item="item"/>
-		</tr>
+		<ItemView v-for="item in Appraisal.compute.items" class="odd:bg-srcblack-light" :item="item"/>
 	</table>
 </template>
 

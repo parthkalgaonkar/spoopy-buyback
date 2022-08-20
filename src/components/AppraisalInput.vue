@@ -1,20 +1,19 @@
 <template>
-	<div class="grid grid-cols-2 grid-rows-3 gap-2">
-		<p class="col-span-2 text-xl">Enter the Janice appraisal code</p>
-		<input class="focus:ring-2 ring-inset ring-srcblue col-span-2 px-2 text-srcblack outline-none" placeholder="Janice code here" type="text" v-model.trim="code"/>
-		<button class="ring-2 ring-inset active:bg-srcblack"
+	<div class="grid grid-cols-2 gap-2">
+		<textarea class="focus:ring-2 h-20 ring-inset ring-srcblue col-span-2 px-2 text-srcblack outline-none" placeholder="Enter your items here" type="text" v-model.trim="eve_input"/>
+		<button class="h-7 ring-2 ring-inset active:bg-srcblack"
 						:class="{
-							'ring-srcblue hover:bg-srcblack-light' : isAlphaNumeric(code),
-							'ring-srcgray cursor-not-allowed': !isAlphaNumeric(code),
-							'cursor-progress': Boolean(Appraisal.code) && !Boolean(Appraisal.app_data)
+							'ring-srcblue hover:bg-srcblack-light' : Boolean(eve_input),
+							'ring-srcgray cursor-not-allowed': !Boolean(eve_input),
+							'cursor-progress': Boolean(Appraisal.eve_input) && !Boolean(Appraisal.app_data)
 						}"
 						@click="handleSubmitClick">
 						Submit
 		</button>
-		<button class="ring-2 ring-inset active:bg-srcblack"
+		<button class="h-7 ring-2 ring-inset active:bg-srcblack"
 						:class="{
-							'hover:bg-srcblack-light ring-srcgray-light' : Boolean(code),
-							'ring-srcgray cursor-not-allowed': !Boolean(code)
+							'hover:bg-srcblack-light ring-srcgray-light' : Boolean(eve_input),
+							'ring-srcgray cursor-not-allowed': !Boolean(eve_input)
 						}"
 						id="clear-button"
 						@click="handleClearClick">
@@ -30,7 +29,7 @@
 	export default {
 		data() {
 			return {
-				code: '',
+				eve_input: '',
 				Appraisal
 			}
 		},
@@ -39,23 +38,16 @@
 				return /^[a-z0-9]+$/gi.test(str);
 			},
 			handleSubmitClick() {
-				var user_input = this.code;
+				var user_input = this.eve_input;
 
 				if (!Boolean(user_input)) return;
 
 				AlertMsg.content = undefined;
-				if (!this.isAlphaNumeric(user_input)) {
-					AlertMsg.content = {
-						alert_type:"ERROR",
-						alert_message:"Invalid input. Enter Janice appraisal code (not the whole link)"
-					};
-					return;
-				}
-				Appraisal.code = this.code;
+				Appraisal.eve_input = user_input;
 			},
 			handleClearClick(ev) {
-				this.code = '';
-				Appraisal.code = undefined;
+				this.eve_input = '';
+				Appraisal.eve_input = undefined;
 			}
 		}
 	}
