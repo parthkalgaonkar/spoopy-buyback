@@ -16,12 +16,13 @@
 		</table>
 		<p>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></p>
 	</div>
-	<div class="ring-2 ring-inset ring-srcgray p-2 h-[116px]" v-else>
+	<div class="ring-2 ring-inset ring-srcgray p-2 h-[132px]" v-else>
 		<ol class="list-decimal list-inside">
 			<li>Copy items from your inventory in the textbox</li>
 			<li>Wait for appraisal to be calculated</li>
 			<li>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></li>
 			<li>Use the amount shown as "Buyback Total"</li>
+			<li>Stonks</li>
 		</ol>
 	</div>
 </template>
