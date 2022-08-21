@@ -15,7 +15,8 @@ export class BuybackCalculator {
 	base_price(item) {
 		var retval = null;
 		for (var flat of this.flat_list) {
-			retval |= flat.calculate(item);
+			var rate = flat.calculate(item);
+			if (rate !== null) retval = rate;
 		}
 		return retval;
 	}
@@ -33,8 +34,10 @@ export class BuybackCalculator {
 		var base_price = item.base_price;
 		var buy_price = base_price - this.calculate_deductions(item);
 		var flat_rate = this.base_price(item);
-		if (flat_rate) buy_price = flat_rate;
-		console.log(buy_price);
+		if (flat_rate !== null) {
+			console.log(flat_rate);
+			buy_price = flat_rate;
+		}
 		return buy_price;
 	}
 }
