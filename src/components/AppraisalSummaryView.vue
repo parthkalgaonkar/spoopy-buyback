@@ -15,6 +15,7 @@
 			</tr>
 		</table>
 		<p>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></p>
+		<p>Contact <span class="font-bold">Scarcrow Archer</span> in case of discrepencies</p>
 	</div>
 	<div class="ring-2 ring-inset ring-srcgray p-2 h-[116px]" v-else>
 		<ol class="list-decimal list-inside">

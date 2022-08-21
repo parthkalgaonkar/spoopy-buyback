@@ -1,6 +1,6 @@
 <template>
 	<div class="grid grid-cols-2 gap-2">
-		<textarea class="focus:ring-2 h-20 ring-inset ring-srcblue col-span-2 px-2 text-srcblack outline-none" placeholder="Enter your items here" type="text" v-model.trim="eve_input"/>
+		<textarea class="focus:ring-2 h-24 ring-inset ring-srcblue col-span-2 px-2 text-srcblack outline-none" placeholder="Enter your items here" type="text" v-model.trim="eve_input"/>
 		<button class="h-7 ring-2 ring-inset active:bg-srcblack"
 						:class="{
 							'ring-srcblue hover:bg-srcblack-light' : Boolean(eve_input),
