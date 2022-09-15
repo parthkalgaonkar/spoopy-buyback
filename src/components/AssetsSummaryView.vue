@@ -18,11 +18,11 @@
 	</div>
 	<div class="ring-2 ring-inset ring-srcgray p-1.5 h-[132px]" v-else>
 		<ol class="list-decimal list-inside">
-			<li>Copy items from your inventory in the textbox</li>
-			<li>Wait for appraisal to be calculated</li>
-			<li>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></li>
-			<li>Use the amount shown as "Buyback Total"</li>
-			<li>Stonks</li>
+			<li>Copy Items you want to buy to textbox</li>
+			<li>Click submit to find which items are available</li>
+			<li>Create contract to <span class="font-bold">SPOOPY BUYBACK</span></li>
+			<li>Use the amount shown as "Sellforward Total"</li>
+			<li>Stinks</li>
 		</ol>
 	</div>
 </template>
@@ -65,3 +65,4 @@
 		}
 	};
 </script>
+

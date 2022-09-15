@@ -1,6 +1,6 @@
 <template>
-	<div class="grid grid-cols-2 gap-2">
-		<textarea class="focus:ring-2 h-24 ring-inset ring-srcblue col-span-2 px-2 text-srcblack outline-none" placeholder="Enter your items here" type="text" v-model.trim="eve_input"/>
+	<div class="grid grid-cols-3 gap-2">
+		<textarea class="focus:ring-2 h-24 ring-inset ring-srcblue col-span-3 px-2 text-srcblack outline-none" placeholder="Enter your items here" type="text" v-model.trim="eve_input"/>
 		<button class="h-7 ring-2 ring-inset active:bg-srcblack"
 						:class="{
 							'ring-srcblue hover:bg-srcblack-light' : Boolean(eve_input),
@@ -19,19 +19,26 @@
 						@click="handleClearClick">
 						Clear
 		</button>
+		<ToggleSwitch off_text="SELL" on_text="BUY" @toggle="handleToggleSwitch"/>
 	</div>
 </template>
 
 <script>
 	import {Appraisal} from "../stores/Appraisal.js";
+	import {Mode} from "../stores/Mode.js";
 	import {AlertMsg} from "../stores/Alert.js";
+	import ToggleSwitch from "./ToggleSwitch.vue";
 
 	export default {
 		data() {
 			return {
 				eve_input: '',
-				Appraisal
+				Appraisal,
+				Mode
 			}
+		},
+		components: {
+			ToggleSwitch,
 		},
 		methods: {
 			isAlphaNumeric(str) {
@@ -48,6 +55,9 @@
 			handleClearClick(ev) {
 				this.eve_input = '';
 				Appraisal.eve_input = undefined;
+			},
+			handleToggleSwitch(value) {
+				Mode.buy_mode = value;
 			}
 		}
 	}
