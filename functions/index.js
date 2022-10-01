@@ -29,7 +29,7 @@ async function get_access_token (auth_code, refresh_token) {
 	if (auth_code !== null) {
 		auth_form = "grant_type=authorization_code&code="+auth_code
 	} else {
-		auth_form = "grant_type=refresh_token&refresh_token="+refresh_token
+		auth_form = "grant_type=refresh_token&refresh_token="+encodeURIComponent(refresh_token)
 	}
 	const auth_url = "https://login.eveonline.com/v2/oauth/token"
 
@@ -88,8 +88,8 @@ async function eve_validata_jwt(token) {
 }
 
 function parse_assets(esi_assets) {
-	const allowed_location_ids = [1039423163305, 1039359141742, 1039492595228];
-	const allowed_location_flags = ["Hangar"];
+	const allowed_location_ids = [1039610054097, 1039595018417];
+	const allowed_location_flags = ["CorpSAG4"];
 
 	// Filter list by location_id and location_flag
 	const assets_filtered = esi_assets.filter((item) => {
@@ -215,7 +215,6 @@ exports.directorAuth = functions.https.onRequest(async (request, response) => {
 
 exports.getAssets = functions.https.onRequest(async (request, response) => {
 	cors(request, response, async () => {
-		// Get the current value of refresh token from DB
 		let refetch_data = 0;
 		let expires = "";
 		try {
@@ -232,7 +231,8 @@ exports.getAssets = functions.https.onRequest(async (request, response) => {
 			}
 		} catch (err) {
 			functions.logger.error(err, {structuredData: true});
-			return undefined;
+			response.status(500).send({message: "Could not get cache control info"});
+			return;
 		}
 
 		if (refetch_data == 0) {
@@ -272,9 +272,10 @@ exports.getAssets = functions.https.onRequest(async (request, response) => {
 		}
 
 		const char_id = payload.sub.split(':')[2];
+		const corp_id = "98475239"
 		const ESI_ENDPOINT = "https://esi.evetech.net/latest";
 		const ROLES_ENDPOINT = ESI_ENDPOINT+"/characters/"+char_id+"/roles/";
-		const ASSETS_ENDPOINT = ESI_ENDPOINT+"/characters/"+char_id+"/assets/?page=";
+		const ASSETS_ENDPOINT = ESI_ENDPOINT+"/corporations/"+corp_id+"/assets/?page=";
 
 
 		// GET the actual assets from ESI (multiple pages, 1000 each)
