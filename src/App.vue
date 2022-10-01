@@ -7,6 +7,9 @@
 	import AppraisalSummarize from './components/AppraisalSummarize.vue';
 	import AppraisalSummaryView from './components/AppraisalSummaryView.vue';
 	import AssetsFetch from './components/AssetsFetch.vue';
+	import AssetsFilter from './components/AssetsFilter.vue';
+	import AssetsCompute from './components/AssetsCompute.vue';
+	import AssetsSummarize from './components/AssetsSummarize.vue';
 	import AssetsView from './components/AssetsView.vue';
 	import AssetsSummaryView from './components/AssetsSummaryView.vue';
 	import AlertView from './components/AlertView.vue';
@@ -39,6 +42,9 @@
 			AlertView,
 			AdminView,
 			AssetsFetch,
+			AssetsFilter,
+			AssetsCompute,
+			AssetsSummarize,
 			AssetsView,
 			AssetsSummaryView,
 		}
@@ -53,9 +59,12 @@
 	<AppraisalSummarize /> <!-- Empty component -->
 	<AppraisalSummaryView v-if="!Mode.buy_mode"/>
 	<AssetsFetch v-if="Mode.buy_mode"/> <!-- Empty component -->
+	<AssetsFilter v-if="Mode.buy_mode"/> <!-- Empty component -->
+	<AssetsCompute v-if="Mode.buy_mode"/> <!-- Empty component -->
+	<AssetsSummarize v-if="Mode.buy_mode"/> <!-- Empty component -->
 	<AssetsSummaryView v-if="Mode.buy_mode"/>
 	<AssetsView class="col-span-2" v-if="Mode.buy_mode"/>
-	<AppraisalView class="col-span-2" />
+	<AppraisalView class="col-span-2" v-if="!Mode.buy_mode" />
 	<AlertView />
 	<AdminView v-if="admin"/>
 </template>

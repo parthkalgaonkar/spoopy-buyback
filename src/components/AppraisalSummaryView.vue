@@ -15,6 +15,7 @@
 			</tr>
 		</table>
 		<p>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></p>
+		<p>Use amount under <span class="font-bold">Buyback Total</span> as the contract value</p>
 	</div>
 	<div class="ring-2 ring-inset ring-srcgray p-1.5 h-[132px]" v-else>
 		<ol class="list-decimal list-inside">

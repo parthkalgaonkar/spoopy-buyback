@@ -1,17 +1,17 @@
 <template>
-	<div v-if="Appraisal.summary">
+	<div v-if="Assets.summary">
 		<table class="w-full">
 			<tr>
 				<td class="text-start">Market Total:</td>
-				<td class="text-end">{{Appraisal.summary.market_total.isk()}}</td>
+				<td class="text-end">{{Assets.summary.market_total.isk()}}</td>
 			</tr>
 			<tr>
-				<td class="text-start">Buyback Total:</td>
-				<td class="text-end cursor-pointer" id="buyback-total" @click="onClick">{{Appraisal.summary.buyback_total.isk()}}</td>
+				<td class="text-start">Sellfore Total:</td>
+				<td class="text-end cursor-pointer" id="buyback-total">{{Assets.summary.sellfore_total.isk()}}</td>
 			</tr>
 			<tr>
 				<td class="text-start">Effective Rate:</td>
-				<td class="text-end">{{Appraisal.summary.rate.percentage()}}</td>
+				<td class="text-end">{{Assets.summary.rate.percentage()}}</td>
 			</tr>
 		</table>
 		<p>Create a contract to <span class="font-bold">SPOOPY BUYBACK</span></p>
@@ -30,37 +30,14 @@
 
 <script>
 	import ItemView from './ItemView.vue';
-	import {Appraisal} from '../stores/Appraisal.js';
+	import {Assets} from '../stores/Assets.js';
 	import tippy from 'tippy.js';
 	import 'tippy.js/dist/tippy.css';
 
 	export default {
 		data() {
 			return {
-				Appraisal,
-			}
-		},
-		methods: {
-			onClick(ev) {
-				var m_tippy = tippy('#'+ev.target.id, {
-					content: 'Copied!',
-					trigger: 'manual',
-					placement: 'auto',
-				});
-
-				var content = new String(ev.target.textContent);
-
-				navigator.clipboard.writeText(content.isk()).then(
-					function() {
-						m_tippy[0].show();
-						setTimeout(function() {
-							m_tippy[0].destroy();
-						}, 1000);
-					},
-					function(err) {
-						console.error('Async: Could not copy text: ', err);
-					}
-				);
+				Assets,
 			}
 		}
 	};

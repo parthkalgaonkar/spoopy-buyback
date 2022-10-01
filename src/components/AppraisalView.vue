@@ -8,8 +8,8 @@
 			<th></th>
 			<th class="text-start">Name</th>
 			<th>Qty</th>
-			<th>{{Appraisal.compute.market}} Buy <br> Total</th>
-			<th>Buyback Rate <br> Total</th>
+			<th>Market Rate<br>Total</th>
+			<th>Buyback Rate<br>Total</th>
 			<th>Effective Rate</th>
 		</tr>
 		<ItemView v-for="item in Appraisal.compute.items" class="odd:bg-srcblack-light" :item="item"/>

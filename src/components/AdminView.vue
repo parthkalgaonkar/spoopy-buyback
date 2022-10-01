@@ -36,9 +36,9 @@
 		},
 		mounted() {
 			const client_id = "c1f7d24cac80406998fd9bb71224e4b5";
-			const callback = encodeURIComponent("https://spoopy-buyback.web.app/admin");
+			const callback = encodeURIComponent(window.location.href);
 			console.log(callback);
-			const roles = encodeURIComponent("esi-assets.read_assets.v1");
+			const roles = encodeURIComponent("esi-assets.read_corporation_assets.v1");
 			this.login_url = "https://login.eveonline.com/v2/oauth/authorize/?response_type=code&redirect_uri="+callback+"&client_id="+client_id+"&scope="+roles+"&state=unique";
 			const params = new URLSearchParams(window.location.search);
 			console.log(params);

@@ -18,7 +18,6 @@
 					var summary = {
 						market_total: 0,
 						buyback_total: 0,
-						market: newval.market
 					};
 
 					// Calculate fields for all items
