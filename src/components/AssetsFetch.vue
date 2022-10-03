@@ -65,16 +65,13 @@
 						return fetch(TYPE_ENDPOINT+item.type_id);
 					});
 
-					const type_list = [];
-					for (const req of req_list) {
-						const resp = await req;
-						const data = await resp.json();
-						type_list.push(data);
-					}
+					const resp_list = await Promise.all(req_list);
+					const type_list = await Promise.all(resp_list.map((item) => item.json()));
 
 					const named_list = type_list.map((item, idx) => {
 						return {
 							typeid: item.type_id,
+							groupid: item.group_id,
 							qty: this.Assets.asset_list[idx].qty,
 							name: item.name
 						};
