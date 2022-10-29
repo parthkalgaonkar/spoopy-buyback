@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "firebase": "^9.9.2",
+    "lodash": "^4.17.21",
     "tippy.js": "^6.3.7",
     "vue": "^3.2.37"
   },

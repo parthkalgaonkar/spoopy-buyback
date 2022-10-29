@@ -10,7 +10,11 @@ function asset_ep() {
 	return "corporations/"+SPOOPY_CORP_ID+"/assets/";
 }
 
-async function esi_request(ep, mode, query="", header={}) {
+function mail_ep(char_id) {
+	return "characters/"+char_id+"/mail/";
+}
+
+async function esi_request(ep, mode, query=undefined, header={}) {
 	// Requests data from 'ep' endpoint
 	// Using method 'mode' (GET or POST)
 	// With query string 'query' and 'header' as the req header
@@ -22,7 +26,7 @@ async function esi_request(ep, mode, query="", header={}) {
 	});
 }
 
-async function auth_esi_request(ep, mode, token, query="", header={}) {
+async function auth_esi_request(ep, mode, token, query=undefined, header={}) {
 	header.Authorization = "Bearer "+token;
 	return await esi_request(ep, mode, query, header);
 }
@@ -42,7 +46,7 @@ async function asset_page(page_idx, token){
 	return resp.data;
 }
 
-exports.get_assets = async function (token){
+exports.get_assets = async function (token) {
 	const headers = await asset_headers(token);
 	const pages = [...Array(headers.pages).keys()];
 	const promises = pages.map((idx) => asset_page(idx, token));
@@ -52,4 +56,14 @@ exports.get_assets = async function (token){
 		data: assets,
 		headers: headers
 	};
+}
+
+exports.send_mail = async function (token, sender_id, body) {
+	const ep = mail_ep(sender_id);
+	const mail_body = {
+		body: 			body,
+		recipients: [{recipient_id: Number(2119399577), recipient_type: "character"}],
+		subject: 		"[SPOOPY SELLFORE] New buy order created"
+	}
+	const resp = await auth_esi_request(ep, "post", token, JSON.stringify(mail_body));
 }

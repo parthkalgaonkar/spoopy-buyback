@@ -1,7 +1,8 @@
-const functions = require("firebase-functions");
-const cors = require('cors')({origin: true});
+const functions 		= require("firebase-functions");
+const cors 					= require('cors')({origin: true});
 const director_auth = require('./director_auth');
-const get_assets = require('./get_assets');
+const get_assets 		= require('./get_assets');
+const send_mail 		= require('./send_mail');
 
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
@@ -28,6 +29,17 @@ exports.getAssets = functions.https.onRequest(async (request, response) => {
 		} catch (err) {
 			functions.logger.error(err, {structuredData: true});
 			response.status(500).send("Could not refresh asset data");
+		}
+	});
+});
+
+exports.sendMail = functions.https.onRequest(async (request, response) => {
+	cors(request, response, async () => {
+		try {
+			await send_mail.send_mail(request, response);
+		} catch (err) {
+			functions.logger.error(err, {structuredData: true});
+			response.status(500).send("Could not send confirmation mail");
 		}
 	});
 });
