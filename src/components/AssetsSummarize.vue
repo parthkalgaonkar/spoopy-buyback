@@ -8,6 +8,7 @@
 		const str_list = item_list.filter((item) => {
 			return item.qty_avail !== 0;
 		}).map((item) => {
+			return `${item.name}\t\t\t${item.qty_avail}(${item.qty})`
 			return item.name+"\t\t\t"+item.qty_avail;
 		});
 		return str_list.join('\n');

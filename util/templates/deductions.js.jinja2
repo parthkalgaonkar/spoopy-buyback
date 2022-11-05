@@ -1,0 +1,42 @@
+class deduction {
+	calculate(item) {
+		return 0;
+	}
+}
+
+export class TaxDeduction {
+	constructor () {
+		this.base_rate = 0.15;
+		this.custom = {
+{% for line in tax_list %}
+			{{line}},
+{% endfor %}
+		};
+	}
+
+	calculate(item) {
+		var typeid = item.typeid;
+		var tax_rate = (this.custom.hasOwnProperty(typeid))?
+				this.custom[typeid] : this.base_rate;
+		return tax_rate * item.base_price;
+	}
+}
+
+export class HaulingDeduction {
+	constructor () {
+		this.rate_per_m3 = 385;
+		this.max_rate = 0.25;
+		this.custom = {
+{% for line in haul_list %}
+			{{line}},
+{% endfor %}
+		};
+	}
+
+	calculate(item) {
+		var typeid = item.typeid;
+		var haul_rate = (this.custom.hasOwnProperty(typeid))?
+				this.custom[typeid] : this.rate_per_m3;
+		return Math.min(haul_rate*item.volume, this.max_rate*item.base_price);
+	}
+}

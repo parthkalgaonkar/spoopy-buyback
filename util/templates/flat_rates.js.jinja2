@@ -1,0 +1,14 @@
+export class FlatRates {
+	constructor() {
+		this.custom = {
+			{% for line in flat_list %}
+			{{line}},
+			{% endfor %}
+		};
+	}
+
+	calculate (item) {
+		if (this.custom.hasOwnProperty(item.typeid)) return this.custom[item.typeid];
+		else return null;
+	}
+}

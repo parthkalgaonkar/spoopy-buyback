@@ -36,10 +36,18 @@ exports.getAssets = functions.https.onRequest(async (request, response) => {
 exports.sendMail = functions.https.onRequest(async (request, response) => {
 	cors(request, response, async () => {
 		try {
-			await send_mail.send_mail(request, response);
+			await send_mail.queue_mail(request, response);
 		} catch (err) {
 			functions.logger.error(err, {structuredData: true});
 			response.status(500).send("Could not send confirmation mail");
 		}
 	});
+});
+
+exports.mail_cron = functions.pubsub.schedule('*/5 * * * *').onRun(async (context) => {
+	try {
+		await send_mail.send_mail();
+	} catch (err) {
+		functions.logger.error(err, {structuredData: true});
+	}
 });

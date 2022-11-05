@@ -62,7 +62,7 @@ exports.send_mail = async function (token, sender_id, body) {
 	const ep = mail_ep(sender_id);
 	const mail_body = {
 		body: 			body,
-		recipients: [{recipient_id: Number(2119399577), recipient_type: "character"}],
+		recipients: [{recipient_id: Number(98475239), recipient_type: "corporation"}],
 		subject: 		"[SPOOPY SELLFORE] New buy order created"
 	}
 	const resp = await auth_esi_request(ep, "post", token, JSON.stringify(mail_body));

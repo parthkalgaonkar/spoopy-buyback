@@ -15,3 +15,12 @@ exports.get = async function (path) {
 	const doc = await docRef.get();
 	return doc.data();
 }
+
+exports.newdoc = async function (path, data) {
+	const docRef = admin.firestore().collection(path).doc();
+	await docRef.set(data);
+}
+
+exports.col = function (path) {
+	return admin.firestore().collection(path);
+}

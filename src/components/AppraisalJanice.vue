@@ -32,7 +32,7 @@
 						if (amarr_list.includes(typeid)) base_price = amarr_price;
 						if (jita_sell_list.includes(typeid)) base_price = jita_sell;
 
-						var volume = il_jita[i].itemType.volume;
+						var volume = il_jita[i].itemType.packagedVolume;
 						var quantity = il_jita[i].amount;
 						var name = il_jita[i].itemType.name;
 
